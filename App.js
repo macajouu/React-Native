@@ -2,13 +2,16 @@ import React from 'react';
 import {MainScreen} from "./screens/MainScreen";
 import {DetailScreen} from "./screens/DetailScreen";
 import {StackNavigator} from "react-navigation";
+import {StatusBar, View} from "react-native";
 
 export default class App extends React.Component {
     render() {
 
         return (
 
-            <SimpleStack></SimpleStack>
+            //<View >
+                <SimpleStack style={{paddingTop: StatusBar.currentHeight}}></SimpleStack>
+            //</View>
         );
     }
 }

@@ -35,6 +35,8 @@ export class GameForm extends React.Component {
         let body = `Added a game with name: ${this.state.nameText}, release year: ${this.state.yearText}, producer: ${this.state.producerText}`;
 
         Linking.openURL('mailto:macajouu@yahoo.com?subject=React&body=' + body);
+
+        this.setState({ nameText: '', yearText: '', producerText: ''});
     }
 
     render() {
