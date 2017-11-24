@@ -7,7 +7,8 @@ import {List} from "../list/List";
 export class MainScreen extends React.Component
 {
     static navigationOptions = {
-        title: 'Home'
+        title: 'Home',
+        headerStyle: {paddingTop: StatusBar.currentHeight}
     }
 
     constructor(props)
@@ -41,11 +42,8 @@ export class MainScreen extends React.Component
 const styles = StyleSheet.create({
     container: {
         flex: 1,
-        paddingTop: 50,
         flexDirection: 'column',
         justifyContent: 'space-between',
-        alignItems: 'center',
-        paddingTop: StatusBar.currentHeight
-
+        alignItems: 'center'
     },
 });
