@@ -1,8 +1,7 @@
 import React from 'react';
 import {View} from 'react-native';
-import {StyleSheet, StatusBar} from 'react-native';
-import {GameForm} from "../model/GameForm";
 import {List} from "../list/List";
+import {StatusBar} from "react-native"
 
 export class MainScreen extends React.Component
 {
@@ -20,30 +19,9 @@ export class MainScreen extends React.Component
     {
         return(
 
-            <View style={styles.container}>
+            <List navigator={this.props.navigation.navigate}/>
 
-                <View style={{flex: 1}}>
-
-                    <GameForm/>
-
-                </View>
-
-
-                <View style={{flex: 1}}>
-                    <List navigator={this.props.navigation.navigate}/>
-                </View>
-
-
-            </View>
         );
     }
 }
 
-const styles = StyleSheet.create({
-    container: {
-        flex: 1,
-        flexDirection: 'column',
-        justifyContent: 'space-between',
-        alignItems: 'center'
-    },
-});

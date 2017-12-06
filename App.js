@@ -9,9 +9,7 @@ export default class App extends React.Component {
 
         return (
 
-            //<View >
                 <SimpleStack style={{paddingTop: StatusBar.currentHeight}}></SimpleStack>
-            //</View>
         );
     }
 }
