@@ -9,7 +9,7 @@ export class GameForm extends React.Component {
         this.handleNameChange = this.handleNameChange.bind(this);
         this.handleYearChange = this.handleYearChange.bind(this);
         this.handleProducerChange = this.handleProducerChange.bind(this);
-        this.handleSubmit = this.handleSubmit.bind(this);
+        this.handleSendMail = this.handleSendMail.bind(this);
 
         this.state = { nameText: '', yearText: '', producerText: ''};
     }
@@ -29,7 +29,7 @@ export class GameForm extends React.Component {
         this.setState({producerText});
     }
 
-    handleSubmit()
+    handleSendMail()
     {
         //Send email
         let body = `Added a game with name: ${this.state.nameText}, release year: ${this.state.yearText}, producer: ${this.state.producerText}`;
@@ -38,6 +38,19 @@ export class GameForm extends React.Component {
 
         this.setState({ nameText: '', yearText: '', producerText: ''});
     }
+
+    handleAddGame()
+    {
+        let game = {    name: this.state.nameText,
+                        releaseYear: this.state.yearText,
+                        producer: this.state.producerText
+        };
+
+        this.setState({ nameText: '', yearText: '', producerText: ''});
+
+        this.props.addGame(game);
+    }
+
 
     render() {
         return (
@@ -69,9 +82,16 @@ export class GameForm extends React.Component {
                     placeholder='Producer'
                 />
 
+                <View style={{borderBottomColor: 'black', borderBottomWidth: 1}}>
+                    <Button
+                        title='Send email'
+                        onPress={this.handleSendMail}
+                    />
+                </View>
+
                 <Button
-                    title='Send email'
-                    onPress={this.handleSubmit}
+                    title='Add game'
+                    onPress={this.handleAddGame.bind(this)}
                 />
 
             </View>
