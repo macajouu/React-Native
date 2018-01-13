@@ -49,9 +49,26 @@ export class List extends React.Component
         }
     }
 
+    _getArrayMax(array)
+    {
+        let max = -1;
+
+        for(let game of array)
+        {
+            if(game.key > max)
+            {
+                max = game.key;
+            }
+        }
+
+        return max;
+    }
+
     async handleAddGame(game)
     {
-        let indexedGame = {key: this.state.listOfGames.length, game: game};
+
+
+        let indexedGame = {key: this._getArrayMax(this.state.listOfGames) + 1, game: game};
 
         let listOfGames = [...this.state.listOfGames, indexedGame];
 
@@ -100,7 +117,7 @@ export class List extends React.Component
         let game = this.state.listOfGames[index].game;
 
         // pass the callback func!
-        this.props.navigator('Details', {index: index, game: game, updateGame: this.handleChangedObject});
+        this.props.navigator('Details', {index: index, game: game, list: this.state.listOfGames, updateGame: this.handleChangedObject});
     }
 
     render()
@@ -119,7 +136,7 @@ export class List extends React.Component
                     <FlatList
                         data={this.state.listOfGames}
                         extraData={this.state}
-                        renderItem={ ({item, index}) => <ListItem gameKey={index} game={item.game} clickedItem={this.handleClickedItem}
+                        renderItem={ ({item, index}) => <ListItem keyy={item.key} gameKey={index} game={item.game} clickedItem={this.handleClickedItem}
                                                                   clickedDelete={this.handleClickedDelete.bind(this)}/> }
                     />
                 </View>

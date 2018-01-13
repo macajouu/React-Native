@@ -16,48 +16,40 @@ export class DetailScreen extends React.Component
         this.state = {language: ""};
     }
 
+    getPieData()
+    {
+        let data = [];
+
+        for(let {game} of this.navParams.list)
+        {
+            console.log(game);
+            let exists = 0;
+
+            for(let obj of data)
+            {
+                if(obj.name == game.producer)
+                {
+                    exists = 1;
+                    obj.number += 1;
+                }
+            }
+
+            if(exists === 0)
+            {
+                data.push({
+                    name: game.producer,
+                    number: 1
+                });
+            }
+        }
+
+        return data;
+    }
+
     render()
     {
 
-        let data = [{
-            "name": "Washington",
-            "population": 7694980
-        }, {
-            "name": "Oregon",
-            "population": 2584160
-        }, {
-            "name": "Minnesota",
-            "population": 6590667
-        }, {
-            "name": "Alaska",
-            "population": 7284698
-        }]
-
-        let options = {
-            margin: {
-                top: 20,
-                left: 20,
-                right: 20,
-                bottom: 20
-            },
-            width: 350,
-            height: 350,
-            color: '#2980B9',
-            r: 50,
-            R: 150,
-            legendPosition: 'topLeft',
-            animate: {
-                type: 'oneByOne',
-                duration: 200,
-                fillTransition: 3
-            },
-            label: {
-                fontFamily: 'Arial',
-                fontSize: 8,
-                fontWeight: true,
-                color: '#ECF0F1'
-            }
-        }
+        let data = this.getPieData();
 
         return (
             <View>
@@ -67,8 +59,8 @@ export class DetailScreen extends React.Component
 
                 <Pie
                     data={data}
-                    options={options}
-                    accessorKey="population" />
+                    options={optionsPie}
+                    accessorKey="number" />
 
             </View>
 
@@ -76,3 +68,28 @@ export class DetailScreen extends React.Component
     }
 }
 
+const optionsPie = {
+    margin: {
+        top: 20,
+        left: 20,
+        right: 20,
+        bottom: 20
+    },
+    width: 350,
+    height: 350,
+    color: '#2980B9',
+    r: 50,
+    R: 150,
+    legendPosition: 'topLeft',
+    animate: {
+        type: 'oneByOne',
+        duration: 200,
+        fillTransition: 3
+    },
+    label: {
+        fontFamily: 'Arial',
+        fontSize: 8,
+        fontWeight: true,
+        color: '#ECF0F1'
+    }
+}
