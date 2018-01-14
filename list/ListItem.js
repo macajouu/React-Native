@@ -22,8 +22,6 @@ export class ListItem extends React.Component
 
     render()
     {
-        //console.log("In List Item, name: " + this.props.game.name);
-        //console.log("In List Item, key: " + this.props.keyy + ", name: " + this.props.game.name);
 
         return(
             <View style={styles.listItem}>
