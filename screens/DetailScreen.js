@@ -13,7 +13,6 @@ export class DetailScreen extends React.Component
 
         this.navParams = this.props.navigation.state.params;
 
-        this.state = {language: ""};
     }
 
     getPieData()
@@ -54,7 +53,7 @@ export class DetailScreen extends React.Component
         return (
             <View>
 
-                <GameEdit updateGame={this.navParams.updateGame} index={this.navParams.index} name={this.navParams.game.name} releaseYear={this.navParams.game.releaseYear} producer={this.navParams.game.producer} />
+                <GameEdit gameKey={this.navParams.gameKey} game={this.navParams.game} updateGame={this.navParams.updateGame} />
 
 
                 <Pie

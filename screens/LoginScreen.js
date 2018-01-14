@@ -7,6 +7,7 @@ import {Input} from "../utils/Input";
 import firebase from 'firebase';
 import { CheckBox } from 'react-native-elements'
 import {Spinner} from "../utils/Spinner";
+import registerForPushNotificationsAsync from "../api/registerForPushNotificationsAsync";
 
 export class LoginScreen extends React.Component
 {
@@ -44,18 +45,19 @@ export class LoginScreen extends React.Component
             .then(user => {
 
                 this.setState({loading: false});
+                registerForPushNotificationsAsync();
                 this.props.navigation.navigate('Main');
             })
             //Can't login
             .catch(error => {
                 console.log("Login failed! --- " + error);
-                this.setState({loginError: error.message});
+                this.setState({loginError: error.message, loading: false});
             })
     }
 
     _signUpUser(email, password)
     {
-        console.log("login user");
+        console.log("sign up user");
         this.setState({loginError: "", signUpError: ""});
 
         firebase.auth().createUserWithEmailAndPassword(email, password)
