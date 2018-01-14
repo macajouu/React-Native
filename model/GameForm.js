@@ -86,13 +86,13 @@ export class GameForm extends React.Component {
                     <Button
                         title='Send email'
                         onPress={this.handleSendMail}
+                        disabled={this.props.viewOnly}
                     />
                 </View>
 
                 <Button
                     title='Add game'
                     onPress={this.handleAddGame.bind(this)}
-                    disabled={this.props.viewOnly}
                 />
             </View>
         );

@@ -7,6 +7,7 @@ import {Input} from "../utils/Input";
 import firebase from 'firebase';
 import { CheckBox } from 'react-native-elements'
 import {Spinner} from "../utils/Spinner";
+import registerForPushNotificationsAsync from "../api/registerForPushNotificationsAsync";
 
 export class LoginScreen extends React.Component
 {
@@ -44,6 +45,7 @@ export class LoginScreen extends React.Component
             .then(user => {
 
                 this.setState({loading: false});
+                registerForPushNotificationsAsync();
                 this.props.navigation.navigate('Main');
             })
             //Can't login

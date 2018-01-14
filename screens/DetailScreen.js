@@ -13,7 +13,6 @@ export class DetailScreen extends React.Component
 
         this.navParams = this.props.navigation.state.params;
 
-        this.state = {language: ""};
     }
 
     getPieData()

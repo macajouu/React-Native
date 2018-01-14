@@ -27,8 +27,6 @@ export class List extends React.Component
             .on('value', (snapshot) => {
                 this.viewOnly = JSON.stringify(snapshot) == "true" ? true : false;
                 this.setState({loading: false});
-                console.log("Snapshot: ", snapshot);
-                console.log("Snapshot.val(): ", + snapshot.val());
             });
     }
     
