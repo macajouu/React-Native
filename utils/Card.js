@@ -24,7 +24,7 @@ const styles = {
         marginLeft: 5,
         marginRight: 5,
         marginTop: 10,
-        backgroundColor: '#fff4a9'
+        backgroundColor: '#8d6658'
     }
 };
 

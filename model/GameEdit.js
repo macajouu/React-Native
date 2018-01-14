@@ -10,10 +10,9 @@ export class GameEdit extends React.Component {
         super(props);
 
         this.handleNameChange = this.handleNameChange.bind(this);
-        this.handleYearChange = this.handleYearChange.bind(this);
         this.handleProducerChange = this.handleProducerChange.bind(this);
 
-        this.state = { nameText: this.props.name, yearText: this.props.releaseYear, producerText: this.props.producer, year: this.props.releaseYear};
+        this.state = { nameText: this.props.game.name, producerText: this.props.game.producer, year: this.props.game.releaseYear};
     }
 
     handleNameChange(nameText)
@@ -21,10 +20,7 @@ export class GameEdit extends React.Component {
         this.setState({nameText});
     }
 
-    handleYearChange(yearText)
-    {
-        this.setState({yearText});
-    }
+
 
     handleProducerChange(producerText)
     {
@@ -33,7 +29,7 @@ export class GameEdit extends React.Component {
 
     componentWillUnmount() {
 
-        if (this.state.nameText !== this.props.name || this.state.year !== this.props.releaseYear || this.state.producerText !== this.props.producer)
+        if (this.state.nameText !== this.props.game.name || this.state.year !== this.props.game.releaseYear || this.state.producerText !== this.props.game.producer)
         {
             Alert.alert(
                 'Save?',
@@ -49,9 +45,9 @@ export class GameEdit extends React.Component {
 
     updateGame()
     {
-        let newGame = { game: {name: this.state.nameText, releaseYear: this.state.year, producer: this.state.producerText} };
+        let newGame = {name: this.state.nameText, releaseYear: this.state.year, producer: this.state.producerText};
 
-        this.props.updateGame(this.props.index, newGame);
+        this.props.updateGame(this.props.gameKey, newGame);
     }
 
 
@@ -73,12 +69,6 @@ export class GameEdit extends React.Component {
                 />
 
                 <Text style={styles.titleText}>Release Year:</Text>
-                {/*<TextInput*/}
-                    {/*style={{height: 40, borderColor: 'gray', borderWidth: 1}}*/}
-                    {/*name='YearInput'*/}
-                    {/*onChangeText={this.handleYearChange}*/}
-                    {/*value={this.state.yearText}*/}
-                {/*/>*/}
 
                 <YearPicker selectedValue={this.state.year} onValueChange={this.handleOnValueChange.bind(this)}/>
 

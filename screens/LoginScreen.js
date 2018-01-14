@@ -49,13 +49,13 @@ export class LoginScreen extends React.Component
             //Can't login
             .catch(error => {
                 console.log("Login failed! --- " + error);
-                this.setState({loginError: error.message});
+                this.setState({loginError: error.message, loading: false});
             })
     }
 
     _signUpUser(email, password)
     {
-        console.log("login user");
+        console.log("sign up user");
         this.setState({loginError: "", signUpError: ""});
 
         firebase.auth().createUserWithEmailAndPassword(email, password)

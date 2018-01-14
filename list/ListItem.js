@@ -12,7 +12,7 @@ export class ListItem extends React.Component
 
     handlePress()
     {
-        this.props.clickedItem(this.props.gameKey);
+        this.props.clickedItem(this.props.gameKey, this.props.game);
     }
 
     handleDelete()
@@ -34,6 +34,7 @@ export class ListItem extends React.Component
                 <Button
                     title='Delete'
                     onPress={this.handleDelete.bind(this)}
+                    disabled={this.props.viewOnly}
                 />
             </View>
         );
